@@ -68,6 +68,24 @@
             position: relative;
         }
 
+        .section-text {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .grid-item:hover ~ .section-text {
+            opacity: 0.75;
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(5, 20%);
@@ -136,6 +154,7 @@
         }
 
         .modal-content {
+            color: white;
             background-color: #1a1a1a;
             padding: 2rem;
             border-radius: 1rem;
@@ -189,6 +208,14 @@
             font-size: 1rem;
             color: #888;
         }
+
+        .monospace {
+            font-size: 1rem;
+            text-align: left;
+            font-family: 'Monaco';
+            color: grey;
+            padding: 0 1rem;
+        }
     </style>
 </head>
 <body>
@@ -200,6 +227,7 @@
     </section>
 
     <section class="grid-section">
+        <div class="section-text">Make cool stuff like this.</div>
         <div class="grid-container">
             <!-- Row 1 -->
             <div class="grid-item"><img src="/images/bullet.jpg"></div>
@@ -245,20 +273,7 @@
             <p>Experience the power of AI collaboration like never before.</p>
         </div>
     </section>
-
-    <section style="background-image: url('/api/placeholder/1920/1080')">
-        <div class="content">
-            <h2>Why Claude?</h2>
-            <ul class="feature-list">
-                <li>Brainstorm ideas at lightning speed</li>
-                <li>Get help with coding, writing, and analysis</li>
-                <li>Have engaging conversations about any topic</li>
-                <li>Transform your productivity overnight</li>
-            </ul>
-        </div>
-    </section>
-
-    <section style="background-image: url('/api/placeholder/1920/1080')">
+    <section style="background-image: url('/images/bg1.jpg')">
         <div class="content">
             <h2>Ready to Begin?</h2>
             <p>Click the button below for a special message.</p>
@@ -269,10 +284,11 @@
     <div class="modal" id="secretModal">
         <div class="modal-content">
             <span class="close-modal" onclick="hideModal()">×</span>
-            <h2>Dear Tim,</h2>
-            <p>You've made it this far, so here's the secret: I'm not just another AI assistant. I'm here to be your thought partner, creative collaborator, and productivity enhancer. Together, we can tackle any challenge, explore new ideas, and maybe even have some fun along the way.</p>
-            <p>Let's start this journey together!</p>
-            <p>- Claude</p>
+            <h2>My dearest Tim,</h2>
+            <p>Enjoy 2 months of Anthropic's Claude AI!</p>
+            <p class="monospace">Username: HoHoHacking@gmail.com</p>
+            <p class="monospace">Password: &lt;redacted&gt;</p>
+            <p>- Brett</p>
         </div>
     </div>
 
@@ -300,6 +316,74 @@
             video.parentElement.addEventListener('mouseleave', () => {
                 video.pause();
                 video.currentTime = 0;
+            });
+        });
+
+        document.querySelectorAll('.grid-item').forEach(gridItem => {
+            gridItem.addEventListener('click', toggleFullscreen);
+        });
+
+        function toggleFullscreen(event) {
+            const gridItem = event.currentTarget;
+            const img = gridItem.querySelector('img, video');
+
+            if (!document.fullscreenElement) {
+                requestFullscreenMode(img);
+            } else {
+                exitFullscreenMode();
+            }
+        }
+
+        function requestFullscreenMode(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.webkitRequestFullscreen) { /* Safari */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE11 */
+                element.msRequestFullscreen();
+            }
+        }
+
+        function exitFullscreenMode() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        }
+
+        function requestFullscreenMode(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.webkitRequestFullscreen) { /* Safari */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE11 */
+                element.msRequestFullscreen();
+            }
+        }
+
+        function exitFullscreenMode() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        }
+
+        document.addEventListener('fullscreenchange', function() {
+            document.querySelectorAll('.grid-item').forEach(gridItem => {
+                const img = gridItem.querySelector('img, video');
+                if (document.fullscreenElement) {
+                    gridItem.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    img.style.objectFit = 'contain';
+                } else {
+                    gridItem.style.backgroundColor = '';
+                    img.style.objectFit = 'cover';
+                }
             });
         });
     </script>
