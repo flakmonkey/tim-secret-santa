@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim × Claude - The Ultimate Collaboration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            background-color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .content {
+            max-width: 800px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+
+        p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-section {
+            display: block;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, 20%);
+            grid-template-rows: repeat(4, 25%);
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+
+        .grid-item {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .grid-item img,
+        .grid-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, object-fit 0.3s ease;
+            display: block;
+        }
+
+        .grid-item:hover {
+            z-index: 2;
+        }
+
+        .grid-item:hover img,
+        .grid-item:hover video {
+            transform: scale(1.1);
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 2rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .feature-list {
+            text-align: left;
+            list-style-type: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-list li::before {
+            content: "🚀";
+            margin-right: 0.5rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <section style="background-image: url('/api/placeholder/1920/1080')">
+        <div class="content">
+            <h1>Tim × Claude</h1>
+            <p>The collaboration you never knew you needed.</p>
+        </div>
+    </section>
+
+    <section class="grid-section">
+        <div class="grid-container">
+            <!-- Row 1 -->
+            <div class="grid-item"><img src="/images/bullet.jpg"></div>
+            <div class="grid-item">
+                <video muted loop playsinline>
+                    <source src="/images/gokart.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="grid-item"><img src="/images/klickitat.jpg"></div>
+            <div class="grid-item"><img src="/images/museum.jpg"></div>
+            <div class="grid-item"><img src="/images/osaka.jpg"></div>
+
+            <!-- Row 2 -->
+            <div class="grid-item"><img src="/images/seattle.jpg"></div>
+            <div class="grid-item"><img src="/images/temple.jpg"></div>
+            <div class="grid-item"><img src="/images/twocookies.jpg"></div>
+            <div class="grid-item">
+                <video muted loop playsinline>
+                    <source src="/images/rich.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="grid-item"><img src="/images/dnd.jpg"></div>
+        </div>
+    </section>
+
+    <section style="background-image: url('/api/placeholder/1920/1080')">
+        <div class="content">
+            <h2>Unleash Your Potential</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Possibilities</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Availability</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Commitment</div>
+                </div>
+            </div>
+            <p>Experience the power of AI collaboration like never before.</p>
+        </div>
+    </section>
+
+    <section style="background-image: url('/api/placeholder/1920/1080')">
+        <div class="content">
+            <h2>Why Claude?</h2>
+            <ul class="feature-list">
+                <li>Brainstorm ideas at lightning speed</li>
+                <li>Get help with coding, writing, and analysis</li>
+                <li>Have engaging conversations about any topic</li>
+                <li>Transform your productivity overnight</li>
+            </ul>
+        </div>
+    </section>
+
+    <section style="background-image: url('/api/placeholder/1920/1080')">
+        <div class="content">
+            <h2>Ready to Begin?</h2>
+            <p>Click the button below for a special message.</p>
+            <button class="cta-button" onclick="showModal()">Reveal the Truth</button>
+        </div>
+    </section>
+
+    <div class="modal" id="secretModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="hideModal()">×</span>
+            <h2>Dear Tim,</h2>
+            <p>You've made it this far, so here's the secret: I'm not just another AI assistant. I'm here to be your thought partner, creative collaborator, and productivity enhancer. Together, we can tackle any challenge, explore new ideas, and maybe even have some fun along the way.</p>
+            <p>Let's start this journey together!</p>
+            <p>- Claude</p>
+        </div>
+    </div>
+
+    <script>
+        function showModal() {
+            document.getElementById('secretModal').style.display = 'flex';
+        }
+
+        function hideModal() {
+            document.getElementById('secretModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('secretModal');
+            if (event.target == modal) {
+                hideModal();
+            }
+        }
+
+        document.querySelectorAll('.grid-item video').forEach(video => {
+            video.parentElement.addEventListener('mouseenter', () => {
+                video.play();
+            });
+
+            video.parentElement.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+    </script>
+</body>
+</html>
